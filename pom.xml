@@ -13,6 +13,7 @@
         <module>RedisCounter</module>
         <module>ShippingLitePrimaryDB</module>
         <module>MongoLayer</module>
+        <module>Aesop</module>
     </modules>
 
 
