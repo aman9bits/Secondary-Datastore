@@ -38,6 +38,7 @@
         <module name="MongoLayer" />
         <module name="mysql-producer" />
         <module name="Reconcilation" />
+        <module name="Reconciliation" />
         <module name="RedisCounter" />
         <module name="runtime" />
         <module name="runtime-blocking-bootstrap" />

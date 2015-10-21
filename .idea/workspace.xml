@@ -2,29 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8bf37a6a-ea5e-4de2-b490-cf295fd801d1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_bson_3_0_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_3_0_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_core_3_0_4.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reconcilation/Reconcilation.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reconcilation/conf.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reconcilation/pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reconcilation/src/main/java/FindMissingIdThread.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reconcilation/src/main/java/ReconcilationApp.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reconcilation/src/main/java/ReconciliationModuleResource.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reconcilation/src/main/java/ReconciliationThread.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reconcilation/src/main/java/SyncTimeThread.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reconcilation/src/main/java/myConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reconcilation/target/MANIFEST.MF" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reconcilation/target/classes/FindMissingIdThread.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reconcilation/target/classes/ReconcilationApp.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reconcilation/target/classes/ReconciliationModuleResource.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reconcilation/target/classes/ReconciliationThread.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reconcilation/target/classes/SyncTimeThread.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Reconcilation/target/classes/myConfig.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Aesop" afterPath="$PROJECT_DIR$/Aesop" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Reconciliation/Reconciliation.iml" afterPath="$PROJECT_DIR$/Reconciliation/Reconciliation.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Aesop/pom.xml" afterPath="$PROJECT_DIR$/Aesop/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Secondary-Datastore.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -108,6 +88,7 @@
     <ignored path="$PROJECT_DIR$/Aesop/consumers/client-event-consumer/target/" />
     <ignored path="$PROJECT_DIR$/Aesop/samples/sample-elastic-search-client-cluster-consumer/target/" />
     <ignored path="$PROJECT_DIR$/Aesop/samples/sample-hbase-client-cluster-consumer/target/" />
+    <ignored path="$PROJECT_DIR$/Reconciliation/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -740,12 +721,12 @@
       <workItem from="1445416807608" duration="2002000" />
       <workItem from="1445419555779" duration="482000" />
       <workItem from="1445420311468" duration="421000" />
-      <workItem from="1445420827842" duration="1417000" />
+      <workItem from="1445420827842" duration="1488000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4322000" />
+    <option name="totallyTimeSpent" value="4393000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
