@@ -1,6 +1,11 @@
 /**
  * Created by aman.gupta on 14/10/15.
  */
+
+
+/*
+    POJO for shipment information insert.
+ */
 public class RequestPOJO {
     long timestamp;
     long shipmentID;
