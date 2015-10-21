@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.flipkart</groupId>
-    <artifactId>MongoApp</artifactId>
+    <artifactId>MongoLayer</artifactId>
     <properties>
         <dropwizard.version>0.8.2</dropwizard.version>
     </properties>

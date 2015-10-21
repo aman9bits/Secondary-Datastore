@@ -12,7 +12,7 @@
         <module>Reconcilation</module>
         <module>RedisCounter</module>
         <module>ShippingLitePrimaryDB</module>
-        <module>MongoApp</module>
+        <module>MongoLayer</module>
     </modules>
 
 

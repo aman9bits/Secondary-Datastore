@@ -24,6 +24,7 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="MongoApp" />
+        <module name="MongoLayer" />
         <module name="Reconcilation" />
         <module name="RedisCounter" />
         <module name="ShippingLitePrimaryDB" />
