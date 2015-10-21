@@ -1,0 +1,3 @@
+[submodule "Aesop"]
+	path = Aesop
+	url = git@github.com:aman9bits/restapi-client.git
