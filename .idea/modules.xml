@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MongoApp/MongoApp.iml" filepath="$PROJECT_DIR$/MongoApp/MongoApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Reconcilation/Reconcilation.iml" filepath="$PROJECT_DIR$/Reconcilation/Reconcilation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RedisCounter/RedisCounter.iml" filepath="$PROJECT_DIR$/RedisCounter/RedisCounter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Secondary-Datastore.iml" filepath="$PROJECT_DIR$/Secondary-Datastore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ShippingLitePrimaryDB/ShippingLitePrimaryDB.iml" filepath="$PROJECT_DIR$/ShippingLitePrimaryDB/ShippingLitePrimaryDB.iml" />
+    </modules>
+  </component>
+</project>
