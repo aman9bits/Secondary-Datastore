@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>Reconcilation</module>
+        <module>Reconciliation</module>
         <module>RedisCounter</module>
         <module>ShippingLitePrimaryDB</module>
         <module>MongoLayer</module>

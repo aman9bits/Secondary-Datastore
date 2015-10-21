@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Aesop/Aesop.iml" filepath="$PROJECT_DIR$/Aesop/Aesop.iml" />
       <module fileurl="file://$PROJECT_DIR$/MongoLayer/MongoLayer.iml" filepath="$PROJECT_DIR$/MongoLayer/MongoLayer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Reconcilation/Reconcilation.iml" filepath="$PROJECT_DIR$/Reconcilation/Reconcilation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Reconciliation/Reconciliation.iml" filepath="$PROJECT_DIR$/Reconciliation/Reconciliation.iml" />
       <module fileurl="file://$PROJECT_DIR$/RedisCounter/RedisCounter.iml" filepath="$PROJECT_DIR$/RedisCounter/RedisCounter.iml" />
       <module fileurl="file://$PROJECT_DIR$/Secondary-Datastore.iml" filepath="$PROJECT_DIR$/Secondary-Datastore.iml" />
       <module fileurl="file://$PROJECT_DIR$/ShippingLitePrimaryDB/ShippingLitePrimaryDB.iml" filepath="$PROJECT_DIR$/ShippingLitePrimaryDB/ShippingLitePrimaryDB.iml" />
