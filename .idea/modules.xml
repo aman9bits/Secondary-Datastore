@@ -2,47 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Aesop/Aesop.iml" filepath="$PROJECT_DIR$/Aesop/Aesop.iml" />
       <module fileurl="file://$PROJECT_DIR$/MongoLayer/MongoLayer.iml" filepath="$PROJECT_DIR$/MongoLayer/MongoLayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/Reconciliation/Reconciliation.iml" filepath="$PROJECT_DIR$/Reconciliation/Reconciliation.iml" />
       <module fileurl="file://$PROJECT_DIR$/RedisCounter/RedisCounter.iml" filepath="$PROJECT_DIR$/RedisCounter/RedisCounter.iml" />
       <module fileurl="file://$PROJECT_DIR$/Secondary-Datastore.iml" filepath="$PROJECT_DIR$/Secondary-Datastore.iml" />
       <module fileurl="file://$PROJECT_DIR$/ShippingLitePrimaryDB/ShippingLitePrimaryDB.iml" filepath="$PROJECT_DIR$/ShippingLitePrimaryDB/ShippingLitePrimaryDB.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/utilities/avro-schema-generator/avro-schema-generator.iml" filepath="$PROJECT_DIR$/Aesop/utilities/avro-schema-generator/avro-schema-generator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/blocking-bootstrap-producers/blocking-bootstrap-mysql-producer/blocking-bootstrap-mysql-producer.iml" filepath="$PROJECT_DIR$/Aesop/blocking-bootstrap-producers/blocking-bootstrap-mysql-producer/blocking-bootstrap-mysql-producer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-call-api-consumer/callAPI.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-call-api-consumer/callAPI.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/consumers/client-event-consumer/client-event-consumer.iml" filepath="$PROJECT_DIR$/Aesop/consumers/client-event-consumer/client-event-consumer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/data-layers/data-layer-api-caller/data-layer-api-caller.iml" filepath="$PROJECT_DIR$/Aesop/data-layers/data-layer-api-caller/data-layer-api-caller.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/data-layers/data-layer-console-appender/data-layer-console-appender.iml" filepath="$PROJECT_DIR$/Aesop/data-layers/data-layer-console-appender/data-layer-console-appender.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/data-layers/data-layer-elastic-search/data-layer-elastic-search.iml" filepath="$PROJECT_DIR$/Aesop/data-layers/data-layer-elastic-search/data-layer-elastic-search.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/data-layers/data-layer-hbase/data-layer-hbase.iml" filepath="$PROJECT_DIR$/Aesop/data-layers/data-layer-hbase/data-layer-hbase.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/data-layers/data-layer-mysql/data-layer-mysql.iml" filepath="$PROJECT_DIR$/Aesop/data-layers/data-layer-mysql/data-layer-mysql.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/producers/diff-producer/diff-producer.iml" filepath="$PROJECT_DIR$/Aesop/producers/diff-producer/diff-producer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/producers/hbase-producer/hbase-producer.iml" filepath="$PROJECT_DIR$/Aesop/producers/hbase-producer/hbase-producer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/producers/mysql-producer/mysql-producer.iml" filepath="$PROJECT_DIR$/Aesop/producers/mysql-producer/mysql-producer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/runtimes/runtime/runtime.iml" filepath="$PROJECT_DIR$/Aesop/runtimes/runtime/runtime.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/runtimes/runtime-blocking-bootstrap/runtime-blocking-bootstrap.iml" filepath="$PROJECT_DIR$/Aesop/runtimes/runtime-blocking-bootstrap/runtime-blocking-bootstrap.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/runtimes/runtime-bootstrap/runtime-bootstrap.iml" filepath="$PROJECT_DIR$/Aesop/runtimes/runtime-bootstrap/runtime-bootstrap.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/runtimes/runtime-client/runtime-client.iml" filepath="$PROJECT_DIR$/Aesop/runtimes/runtime-client/runtime-client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/runtimes/runtime-client-bootstrap-producer/runtime-client-bootstrap-producer.iml" filepath="$PROJECT_DIR$/Aesop/runtimes/runtime-client-bootstrap-producer/runtime-client-bootstrap-producer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/runtimes/runtime-client-cluster/runtime-client-cluster.iml" filepath="$PROJECT_DIR$/Aesop/runtimes/runtime-client-cluster/runtime-client-cluster.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/runtimes/runtime-relay/runtime-relay.iml" filepath="$PROJECT_DIR$/Aesop/runtimes/runtime-relay/runtime-relay.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/runtimes/runtime-snapshot-serializer/runtime-snapshot-serializer.iml" filepath="$PROJECT_DIR$/Aesop/runtimes/runtime-snapshot-serializer/runtime-snapshot-serializer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-bootstrap-server/sample-bootstrap-server.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-bootstrap-server/sample-bootstrap-server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-client/sample-client.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-client/sample-client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-client-bootstrap-producer/sample-client-bootstrap-producer.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-client-bootstrap-producer/sample-client-bootstrap-producer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-client-cluster/sample-client-cluster.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-client-cluster/sample-client-cluster.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-client-common/sample-client-common.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-client-common/sample-client-common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-console-appender-client-cluster-consumer/sample-console-appender-client-cluster-consumer.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-console-appender-client-cluster-consumer/sample-console-appender-client-cluster-consumer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-diff-relay/sample-diff-relay.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-diff-relay/sample-diff-relay.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-elastic-search-client-cluster-consumer/sample-elastic-search-client-cluster-consumer.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-elastic-search-client-cluster-consumer/sample-elastic-search-client-cluster-consumer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-hbase-client-cluster-consumer/sample-hbase-client-cluster-consumer.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-hbase-client-cluster-consumer/sample-hbase-client-cluster-consumer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-hbase-relay/sample-hbase-relay.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-hbase-relay/sample-hbase-relay.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-mapper-processor-nesting-client/sample-mapper-processor-nesting-client.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-mapper-processor-nesting-client/sample-mapper-processor-nesting-client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-memory-relay/sample-memory-relay.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-memory-relay/sample-memory-relay.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-mysql-mysql-blocking-bootstrap/sample-mysql-mysql-blocking-bootstrap.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-mysql-mysql-blocking-bootstrap/sample-mysql-mysql-blocking-bootstrap.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-mysql-relay/sample-mysql-relay.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-mysql-relay/sample-mysql-relay.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-snapshot-serializer/sample-snapshot-serializer.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-snapshot-serializer/sample-snapshot-serializer.iml" />
     </modules>
   </component>
 </project>
