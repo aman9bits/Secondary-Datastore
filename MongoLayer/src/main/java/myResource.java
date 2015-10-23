@@ -28,13 +28,18 @@ import java.util.Map;
 
 @Path("/")
 public class myResource {
-
+    /*
+        Insert shipment information in MongoDB
+     */
     @POST
     @Path("/insertMongo")
     @Produces("application/json")
     public ResponsePOJO insertShipment(String request) throws ParseException {
+        //convert shipment json string to BsonDocument
         BsonDocument shipment = BsonDocument.parse(request);
+        //Add latest status field in document.
         shipment.append("latest_status", new BsonDocument("checkpoint_id", shipment.getNumber("checkpointID")).append("status", shipment.getString("new_status")));
+        //Modify document
         shipment.append(shipment.getString("new_status").getValue()+"_state_details",new BsonDocument("checkpointID",shipment.get("checkpointID"))
                 .append("created_at",shipment.get("created_at"))
                 .append("location",shipment.get("location"))
@@ -59,6 +64,7 @@ public class myResource {
         shipment.remove("updated_at");
         shipment.remove("status_type");
         shipment.remove("updated_by");
+        //Create new connection
         MongoClient mongoClient =  new MongoClient("localhost");
         MongoDatabase database = mongoClient.getDatabase("shipping_staging");
         MongoCollection<Document> collection = database.getCollection("Shipments");

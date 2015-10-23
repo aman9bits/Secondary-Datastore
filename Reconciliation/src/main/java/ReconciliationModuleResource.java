@@ -23,13 +23,17 @@ public class ReconciliationModuleResource {
         super();
     }
 
+    /*
+        Inserts a checkpoint entry into checkpoint list corresponding to the shardID.
+        Input is a JSON with keys as shardID and checkpointID.
+        List name is the shardID.
+     */
     @POST
     @Consumes("application/json")
     @Path("/insert")
     public void insertCheckpoint(String request) {
-
         JSONObject obj = new JSONObject(request);
-        long checkpoint = Long.parseLong(obj.get("id").toString());
+        long checkpoint = Long.parseLong(obj.get("checkpointID").toString());
         String shardId = obj.get("shardId").toString();
         //Create new redis connection
         Jedis jedis = new Jedis("localhost");
@@ -38,6 +42,9 @@ public class ReconciliationModuleResource {
         jedis.close();
     }
 
+    /*
+        Creates a thread for each shard that finds the missing checkpoints
+     */
     @POST
     @Path("/findMissingEntries")
     public void findMissingEntries() {
@@ -63,6 +70,10 @@ public class ReconciliationModuleResource {
         jedis.close();
     }
 
+    /*
+        Creates a thread for each shardID that reconciles the missing ids listed.
+        The thread gets the record corresponding to missing checkpoint ID from the primary DB and triggers the marvin workflow.
+     */
     @POST
     @Path("/reconcile")
     public void reconcile() {
@@ -90,6 +101,10 @@ public class ReconciliationModuleResource {
         jedis.close();
     }
 
+    /*
+        Creates a thread for each shard that gets the latest insert's time for the corresponding shard and if it is
+        same as the checkpointed time, it updates the latest checkpoint time to current time.
+     */
     @POST
     @Path("/syncTime")
     public void syncTime() {
@@ -111,6 +126,9 @@ public class ReconciliationModuleResource {
         jedis.close();
     }
 
+    /*
+        It purges the list of checkpoints for each shard till the latest checkpoint of that shard.
+     */
     @POST
     @Path("/purge")
     public void purgeCheckpointList() {
@@ -125,6 +143,12 @@ public class ReconciliationModuleResource {
         jedis.close();
     }
 
+    /*
+        It performs the following functions in the given order:
+        1.  Finds the latest checkpoint for each shard and stores in redis.
+        2.  Get timestamp corresponding to each shard's latest checkpoint and updates in ShardData
+        3.  Based on these values, calculates the final time to be displayed on the dashboard
+     */
     @POST
     @Path("/updateCheckpoint")
     public void updateCheckpoint() {
@@ -221,6 +245,10 @@ public class ReconciliationModuleResource {
         jedis.close();
     }
 
+    /*
+        Finds the latest checkpoint i.e. the highest checkpoint ID such that no checkpoint is missing between this ID
+        and current latest checkpoint.
+     */
     private String findCheckpoint(int low, int high, int length, String[] arr) {
         if (high == low) {
             return arr[low];
@@ -243,14 +271,4 @@ public class ReconciliationModuleResource {
             }
         }
     }
-
-
-    @GET
-    @Path("/test")
-    public void test() {
-        String arr[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "14", "16", "18", "20"};
-        System.out.print(findCheckpoint(0, 10, 11, arr));
-
-    }
-
 }
