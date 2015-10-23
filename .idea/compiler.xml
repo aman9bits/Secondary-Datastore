@@ -49,6 +49,7 @@
         <module name="runtime-relay" />
         <module name="runtime-snapshot-serializer" />
         <module name="sample-bootstrap-server" />
+        <module name="sample-call-api-consumer" />
         <module name="sample-client" />
         <module name="sample-client-bootstrap-producer" />
         <module name="sample-client-cluster" />
@@ -80,6 +81,7 @@
       <module name="runtime-relay" target="1.6" />
       <module name="runtime-snapshot-serializer" target="1.6" />
       <module name="sample-bootstrap-server" target="1.6" />
+      <module name="sample-call-api-consumer" target="1.6" />
       <module name="sample-client" target="1.6" />
       <module name="sample-client-bootstrap-producer" target="1.6" />
       <module name="sample-client-cluster" target="1.6" />

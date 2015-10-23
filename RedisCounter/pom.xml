@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.flipkart</groupId>
+    <groupId>com.flipkart.redis</groupId>
     <artifactId>RedisCounter</artifactId>
     <properties>
         <dropwizard.version>0.8.2</dropwizard.version>

@@ -1,3 +1,4 @@
+--[[ Returns true if an item is not present in the table, else returns false --]]
 local function notInTable(tbl, item)
     for key, value in pairs(tbl) do
         if value == item then
@@ -7,8 +8,15 @@ local function notInTable(tbl, item)
     return true
 end
 
+--[[ Fetch redis list between the time range specified by ARGV[1] and ARGV[2] --]]
 local initialList = redis.call('zrangebyscore',KEYS[1],ARGV[1],ARGV[2])
 
+--[[
+    arr1 stores the counter value and shipmentIDs for first counter, i is the index for arr1
+    arr2 stores the counter value and shipmentIDs for first counter, j is the index for arr2
+    arr3 stores the counter value and shipmentIDs for first counter, k is the index for arr3
+    arr4 stores the counter value and shipmentIDs for first counter, l is the index for arr4
+--]]
 local arr1={}
 local arr2={}
 local arr3={}
@@ -18,32 +26,52 @@ local j=1
 local k=1
 local l=1
 
-
+--[[
+    converts ARGV[3] to JSON Object named commonJSON which contains parameters common to all counters
+    singleValueCommonJSON will store the parameters that can have only one matching value
+    multiValueCommonJSON will store the parameters that can have multiple possible matching values
+--]]
 local commonJSON = cjson.decode(ARGV[3])
 local singleValueCommonJSON = {}
 local multiValueCommonJSON = {}
 
-
+--[[
+    converts ARGV[4] to JSON Object which contains parameters specific to first counter
+    singleValueDifferentJSON1 will store the parameters that can have only one matching value
+    multiValueDifferentJSON1 will store the parameters that can have multiple possible matching values
+--]]
 local differentJSON1 = cjson.decode(ARGV[4])
 local singleValueDifferentJSON1 = {}
 local multiValueDifferentJSON1 = {}
 
-
+--[[
+    converts ARGV[4] to JSON Object which contains parameters specific to second counter
+    singleValueDifferentJSON1 will store the parameters that can have only one matching value
+    multiValueDifferentJSON1 will store the parameters that can have multiple possible matching values
+--]]
 local differentJSON2 = cjson.decode(ARGV[5])
 local singleValueDifferentJSON2 = {}
 local multiValueDifferentJSON2 = {}
 
-
+--[[
+    converts ARGV[4] to JSON Object which contains parameters specific to third counte
+    singleValueDifferentJSON1 will store the parameters that can have only one matching value
+    multiValueDifferentJSON1 will store the parameters that can have multiple possible matching values
+--]]
 local differentJSON3 = cjson.decode(ARGV[6])
 local singleValueDifferentJSON3 = {}
 local multiValueDifferentJSON3 = {}
 
-
+--[[
+    converts ARGV[4] to JSON Object which contains parameters specific to fourth counter
+    singleValueDifferentJSON1 will store the parameters that can have only one matching value
+    multiValueDifferentJSON1 will store the parameters that can have multiple possible matching values
+--]]
 local differentJSON4 = cjson.decode(ARGV[7])
 local singleValueDifferentJSON4 = {}
 local multiValueDifferentJSON4 = {}
 
-
+--[[ separates parameters with multiple possible values from those with single possible value for commonJSON --]]
 for key, value in pairs(commonJSON) do
     if type(value) == "table" then
         multiValueCommonJSON[key] = value
@@ -52,7 +80,7 @@ for key, value in pairs(commonJSON) do
     end
 end
 
-
+--[[ separates parameters with multiple possible values from those with single possible value for diffJSON1--]]
 for key, value in pairs(differentJSON1) do
     if type(value) == "table" then
         multiValueDifferentJSON1[key] = value
@@ -61,7 +89,7 @@ for key, value in pairs(differentJSON1) do
     end
 end
 
-
+--[[ separates parameters with multiple possible values from those with single possible value for diffJSON2--]]
 for key, value in pairs(differentJSON2) do
     if type(value) == "table" then
         multiValueDifferentJSON2[key] = value
@@ -70,7 +98,7 @@ for key, value in pairs(differentJSON2) do
     end
 end
 
-
+--[[ separates parameters with multiple possible values from those with single possible value for diffJSON3--]]
 for key, value in pairs(differentJSON3) do
     if type(value) == "table" then
         multiValueDifferentJSON3[key] = value
@@ -79,7 +107,7 @@ for key, value in pairs(differentJSON3) do
     end
 end
 
-
+--[[ separates parameters with multiple possible values from those with single possible value for diffJSON4--]]
 for key, value in pairs(differentJSON4) do
     if type(value) == "table" then
         multiValueDifferentJSON4[key] = value
@@ -88,16 +116,25 @@ for key, value in pairs(differentJSON4) do
     end
 end
 
-
+--[[ run the loop for each entry in the list received by redis--]]
 for temp, v in pairs(initialList) do
-
+    --[[ convert the json string present in the entry's "value" to json object--]]
     local json = cjson.decode(v)
 
+    --[[
+        flag corresponds to common parameters
+        flag1 corresponds to parameters particular to counter1
+        flag2 corresponds to parameters particular to counter2
+        flag3 corresponds to parameters particular to counter3
+        flag4 corresponds to parameters particular to counter4
+    --]]
     local flag = true
     local flag1 = true
     local flag2 = true
     local flag3 = true
     local flag4 = true
+
+    --[[ set flags to false and break if any parameter is not matched--]]
 
     for key, value in pairs(singleValueCommonJSON) do
         if json[key] ~= value then
@@ -178,7 +215,7 @@ for temp, v in pairs(initialList) do
             end
         end
 
-
+        --[[ increment the corresponding counter and append the list if the commmon and particular flag are still true--]]
         if flag == true and flag1==true then
             i = i+1
             arr1[i]=json[ARGV[8]]
@@ -198,16 +235,16 @@ for temp, v in pairs(initialList) do
     end
 end
 
+--[[ store the number of entries, which is index-1, as the first element in the list--]]
 arr1[1]=i-1
 arr2[1]=j-1
 arr3[1]=k-1
 arr4[1]=l-1
 
+--[[store the four lists in the final table and return that table--]]
 local arr_final={}
 arr_final[1]=arr1
 arr_final[2]=arr2
 arr_final[3]=arr3
 arr_final[4]=arr4
 return arr_final
-
-

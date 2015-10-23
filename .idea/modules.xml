@@ -10,7 +10,6 @@
       <module fileurl="file://$PROJECT_DIR$/ShippingLitePrimaryDB/ShippingLitePrimaryDB.iml" filepath="$PROJECT_DIR$/ShippingLitePrimaryDB/ShippingLitePrimaryDB.iml" />
       <module fileurl="file://$PROJECT_DIR$/Aesop/utilities/avro-schema-generator/avro-schema-generator.iml" filepath="$PROJECT_DIR$/Aesop/utilities/avro-schema-generator/avro-schema-generator.iml" />
       <module fileurl="file://$PROJECT_DIR$/Aesop/blocking-bootstrap-producers/blocking-bootstrap-mysql-producer/blocking-bootstrap-mysql-producer.iml" filepath="$PROJECT_DIR$/Aesop/blocking-bootstrap-producers/blocking-bootstrap-mysql-producer/blocking-bootstrap-mysql-producer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-call-api-consumer/callAPI.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-call-api-consumer/callAPI.iml" />
       <module fileurl="file://$PROJECT_DIR$/Aesop/consumers/client-event-consumer/client-event-consumer.iml" filepath="$PROJECT_DIR$/Aesop/consumers/client-event-consumer/client-event-consumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/Aesop/data-layers/data-layer-api-caller/data-layer-api-caller.iml" filepath="$PROJECT_DIR$/Aesop/data-layers/data-layer-api-caller/data-layer-api-caller.iml" />
       <module fileurl="file://$PROJECT_DIR$/Aesop/data-layers/data-layer-console-appender/data-layer-console-appender.iml" filepath="$PROJECT_DIR$/Aesop/data-layers/data-layer-console-appender/data-layer-console-appender.iml" />
@@ -29,6 +28,7 @@
       <module fileurl="file://$PROJECT_DIR$/Aesop/runtimes/runtime-relay/runtime-relay.iml" filepath="$PROJECT_DIR$/Aesop/runtimes/runtime-relay/runtime-relay.iml" />
       <module fileurl="file://$PROJECT_DIR$/Aesop/runtimes/runtime-snapshot-serializer/runtime-snapshot-serializer.iml" filepath="$PROJECT_DIR$/Aesop/runtimes/runtime-snapshot-serializer/runtime-snapshot-serializer.iml" />
       <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-bootstrap-server/sample-bootstrap-server.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-bootstrap-server/sample-bootstrap-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-call-api-consumer/sample-call-api-consumer.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-call-api-consumer/sample-call-api-consumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-client/sample-client.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-client/sample-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-client-bootstrap-producer/sample-client-bootstrap-producer.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-client-bootstrap-producer/sample-client-bootstrap-producer.iml" />
       <module fileurl="file://$PROJECT_DIR$/Aesop/samples/sample-client-cluster/sample-client-cluster.iml" filepath="$PROJECT_DIR$/Aesop/samples/sample-client-cluster/sample-client-cluster.iml" />
