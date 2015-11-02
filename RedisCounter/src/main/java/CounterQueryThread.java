@@ -1,7 +1,12 @@
+import org.json.JSONObject;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.exceptions.JedisConnectionException;
+import redis.clients.jedis.exceptions.JedisDataException;
 
+import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Created by aman.gupta on 15/10/15.
@@ -22,42 +27,65 @@ public class CounterQueryThread extends Thread {
     //redis port number
     int port;
     //lower bound for timestamp range
-    long min;
+    String min;
     //upper bound for timestamp range
-    long max;
+    String max;
 
-    public CounterQueryThread(String script, String commonJSON, String diffJSON1, String diffJSON2, String diffJSON3, String diffJSON4, int port, long min, long max) {
+    ArrayList<ArrayList<Object>> counterWithList;
+    Map<Integer,Response> responseCodes;
+
+    public CounterQueryThread(ArrayList<ArrayList<Object>> counterWithList, String script, int port,JSONObject request, Map<Integer,Response> responseCodes) {
+        this.counterWithList=counterWithList;
         this.script = script;
-        this.commonJSON = commonJSON;
-        this.diffJSON1 = diffJSON1;
-        this.diffJSON2 = diffJSON2;
-        this.diffJSON3 = diffJSON3;
-        this.diffJSON4 = diffJSON4;
+        this.commonJSON = request.get("commonJson").toString();
+        this.diffJSON1 = request.get("diffJsonForCounter1").toString();
+        this.diffJSON2 = request.get("diffJsonForCounter2").toString();
+        this.diffJSON3 = request.get("diffJsonForCounter3").toString();
+        this.diffJSON4 = request.get("diffJsonForCounter4").toString();
         this.port = port;
-        this.min = min;
-        this.max = max;
+        this.min = request.get("lowerBound").toString();
+        this.max = request.get("upperBound").toString();
+        this.responseCodes = responseCodes;
     }
 
     public void run() {
-        Jedis jedis = new Jedis("localhost", port);
-        //System.out.print(regex);
-        //Get the arraylists with counters and list of shipmentIDs
-        ArrayList<ArrayList<Object>> result = (ArrayList<ArrayList<Object>>) jedis.evalsha(script, 1, "testing", String.valueOf(min), String.valueOf(max), commonJSON, diffJSON1, diffJSON2, diffJSON3, diffJSON4, "shipmentID");
+        Response response = Response.status(Response.Status.OK).build();
+        Jedis jedis;
+        try{
+            jedis = new Jedis("localhost", port);
+            try {
+                //Get the arraylists with counters and list of shipmentIDs
+                ArrayList<ArrayList<Object>> result = (ArrayList<ArrayList<Object>>) jedis.evalsha(script, 1, "testing", min, max, commonJSON, diffJSON1, diffJSON2, diffJSON3, diffJSON4, "shipmentID");
 
-        System.out.println(result);
+                System.out.println(result);
 
-        //Add the counters to the global counterWithList variable and append the list of shipmentIDs
-        synchronized (StaticCounterResource.counterWithList) {
-            Iterator<ArrayList<Object>> it = result.iterator();
-            Iterator<ArrayList<Object>> it2 = StaticCounterResource.counterWithList.iterator();
-            while (it.hasNext()) {
-                ArrayList<Object> row = it.next();
-                ArrayList<Object> row2 = it2.next();
-                //System.out.println(Long.parseLong(row.get(0).toString())+" "+Long.parseLong(row2.get(0).toString())+" "+(Long.parseLong(row.get(0).toString())+Long.parseLong(row2.get(0).toString())));
-                row2.set(0, (Long.parseLong(row.get(0).toString())+Long.parseLong(row2.get(0).toString())));
-                row2.addAll(row.subList(1,row.size()));
+                //Add the counters to the global counterWithList variable and append the list of shipmentIDs
+                synchronized (counterWithList) {
+                    Iterator<ArrayList<Object>> it = result.iterator();
+                    Iterator<ArrayList<Object>> it2 = counterWithList.iterator();
+                    while (it.hasNext() && it2.hasNext()) {
+                        ArrayList<Object> row = it.next();
+                        ArrayList<Object> row2 = it2.next();
+                        //System.out.println(Long.parseLong(row.get(0).toString())+" "+Long.parseLong(row2.get(0).toString())+" "+(Long.parseLong(row.get(0).toString())+Long.parseLong(row2.get(0).toString())));
+                        row2.set(0, (Long.parseLong(row.get(0).toString())+Long.parseLong(row2.get(0).toString())));
+                        row2.addAll(row.subList(1,row.size()));
+                    }
+                }
+                jedis.close();
+            }catch(Exception e){
+                if(!jedis.scriptExists(script)){
+                    response = Response.status(Response.Status.SERVICE_UNAVAILABLE).entity("Redis port:" + port + "\tPlease load the lua script again.").build();
+                }
+                else {
+                    response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Redis port:" + port + "\t" + e.getMessage()).build();
+                }
+                    System.out.println(e.getClass());
             }
+        }catch (JedisConnectionException ex){
+            response = Response.status(Response.Status.BAD_GATEWAY).entity("Redis Server at port no. "+port+" is not running.").build();
+        }catch (Exception e) {
+            response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Redis port:"+port+"\t"+e.getMessage()).build();
         }
-        jedis.close();
+        responseCodes.put(port, response);
     }
 }

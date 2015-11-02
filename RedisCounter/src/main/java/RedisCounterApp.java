@@ -11,7 +11,7 @@ public class RedisCounterApp extends Application<myConfig> {
 
     @Override
     public void run(myConfig conf, Environment environment) throws Exception {
-        final StaticCounterResource resource = new StaticCounterResource();
+        final StaticCounterResource resource = new StaticCounterResource(conf.getListOfRedisPorts(), conf.getListOfLuaScripts());
         environment.jersey().register(resource);
     }
 }
