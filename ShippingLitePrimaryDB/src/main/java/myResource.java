@@ -115,15 +115,6 @@ public class myResource {
         return Response.status(Response.Status.OK).entity(ship).build();
     }
 
-    @POST
-    @Path("/insertShipment")
-    @Timed
-    @UnitOfWork
-    public void insertShipment(){
-        ShippingLiteShipments ship = new ShippingLiteShipments(1.21,"1990-12-12","1990-12-12","1990-12-12");
-        dao3.create(ship);
-    }
-
 
     @POST
     @Path("/test")

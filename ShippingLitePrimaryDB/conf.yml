@@ -12,13 +12,13 @@ database:
   driverClass: com.mysql.jdbc.Driver
 
   # the username
-  user: aman
+  user: aman.gupta
 
   # the password
-  password: aman
+  password: aman.gupta
 
   # the JDBC URL
-  url: jdbc:mysql://flo-fkl-db1.stage.ch.flipkart.com:3306/shipping_staging
+  url: jdbc:mysql://flo-fkl-db1.stage.ch.flipkart.com:3306/shipping-lite
 
   # any properties specific to your JDBC driver:
   properties:

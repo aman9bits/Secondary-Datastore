@@ -23,6 +23,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="ApiCaller" />
         <module name="avro-schema-generator" />
         <module name="blocking-bootstrap-mysql-producer" />
         <module name="callAPI" />
@@ -31,9 +32,11 @@
         <module name="data-layer-console-appender" />
         <module name="data-layer-elastic-search" />
         <module name="data-layer-hbase" />
+        <module name="data-layer-kafka" />
         <module name="data-layer-mysql" />
         <module name="diff-producer" />
         <module name="hbase-producer" />
+        <module name="HBaseLayer" />
         <module name="MongoApp" />
         <module name="MongoLayer" />
         <module name="mysql-producer" />
@@ -48,8 +51,8 @@
         <module name="runtime-client-cluster" />
         <module name="runtime-relay" />
         <module name="runtime-snapshot-serializer" />
+        <module name="sample-api-caller-client-cluster-consumer" />
         <module name="sample-bootstrap-server" />
-        <module name="sample-call-api-consumer" />
         <module name="sample-client" />
         <module name="sample-client-bootstrap-producer" />
         <module name="sample-client-cluster" />
@@ -59,6 +62,7 @@
         <module name="sample-elastic-search-client-cluster-consumer" />
         <module name="sample-hbase-client-cluster-consumer" />
         <module name="sample-hbase-relay" />
+        <module name="sample-kafka-client-cluster-consumer" />
         <module name="sample-mapper-processor-nesting-client" />
         <module name="sample-memory-relay" />
         <module name="sample-mysql-mysql-blocking-bootstrap" />
@@ -80,6 +84,7 @@
       <module name="runtime-client-cluster" target="1.6" />
       <module name="runtime-relay" target="1.6" />
       <module name="runtime-snapshot-serializer" target="1.6" />
+      <module name="sample-api-caller-client-cluster-consumer" target="1.6" />
       <module name="sample-bootstrap-server" target="1.6" />
       <module name="sample-call-api-consumer" target="1.6" />
       <module name="sample-client" target="1.6" />
@@ -90,6 +95,7 @@
       <module name="sample-elastic-search-client-cluster-consumer" target="1.6" />
       <module name="sample-hbase-client-cluster-consumer" target="1.6" />
       <module name="sample-hbase-relay" target="1.6" />
+      <module name="sample-kafka-client-cluster-consumer" target="1.6" />
       <module name="sample-mapper-processor-nesting-client" target="1.6" />
       <module name="sample-memory-relay" target="1.6" />
       <module name="sample-mysql-mysql-blocking-bootstrap" target="1.6" />

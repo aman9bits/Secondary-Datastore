@@ -15,3 +15,11 @@ listOfRedisPorts:
   - 7005
 listOfLuaScripts:
   - script.lua
+  - script2.lua
+redisServerIPAddress: 172.20.164.215
+redisListName: shipmentJSON
+counterQueryParams:
+  counterQueryScript: script.lua
+  redisListName: testing
+  idToBeReturned: shipmentID
+  numberOfCounters: 5

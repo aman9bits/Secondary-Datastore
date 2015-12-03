@@ -1,8 +1,8 @@
 server:
   applicationConnectors:
   - type: http
-    port: 8076
+    port: 8090
   adminConnectors:
   - type: http
-    port: 8077
+    port: 8091
   type: default

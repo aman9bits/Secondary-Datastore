@@ -5,6 +5,7 @@ import redis.clients.jedis.exceptions.JedisDataException;
 
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -16,14 +17,8 @@ public class CounterQueryThread extends Thread {
     String script;
     //Parameters common to all counters
     String commonJSON;
-    //Parameters particular to first counter
-    String diffJSON1;
-    //Parameters particular to second counter
-    String diffJSON2;
-    //Parameters particular to third counter
-    String diffJSON3;
-    //Parameters particular to fourth counter
-    String diffJSON4;
+    //Parameters particular to each counter
+    String diffJSON;
     //redis port number
     int port;
     //lower bound for timestamp range
@@ -31,31 +26,38 @@ public class CounterQueryThread extends Thread {
     //upper bound for timestamp range
     String max;
 
+    int counterIndex = 0;
     ArrayList<ArrayList<Object>> counterWithList;
     Map<Integer,Response> responseCodes;
 
-    public CounterQueryThread(ArrayList<ArrayList<Object>> counterWithList, String script, int port,JSONObject request, Map<Integer,Response> responseCodes) {
+    String noOfCounters;
+    String idToBeReturned;
+    String redisListName;
+    String redisServerIPAddress; 
+    public CounterQueryThread(ArrayList<ArrayList<Object>> counterWithList, Map<String,String> scripts, int port,JSONObject request, Map<Integer,Response> responseCodes, CounterQueryParams counterQueryParams, String redisServerIPAddress) {
+
         this.counterWithList=counterWithList;
-        this.script = script;
-        this.commonJSON = request.get("commonJson").toString();
-        this.diffJSON1 = request.get("diffJsonForCounter1").toString();
-        this.diffJSON2 = request.get("diffJsonForCounter2").toString();
-        this.diffJSON3 = request.get("diffJsonForCounter3").toString();
-        this.diffJSON4 = request.get("diffJsonForCounter4").toString();
+        this.script = scripts.get(counterQueryParams.getCounterQueryScript());
+        this.commonJSON = request.get(Constants.COMMON_JSON).toString();
+        this.diffJSON = request.get(Constants.DIFF_JSON).toString();
         this.port = port;
-        this.min = request.get("lowerBound").toString();
-        this.max = request.get("upperBound").toString();
+        this.min = request.get(Constants.LOWER_BOUND).toString();
+        this.max = request.get(Constants.UPPER_BOUND).toString();
         this.responseCodes = responseCodes;
+        this.noOfCounters = String.valueOf(counterQueryParams.getNumberOfCounters());
+        this.redisListName = counterQueryParams.getRedisListName();
+        this.idToBeReturned = counterQueryParams.getIdToBeReturned();
+        this.redisServerIPAddress = redisServerIPAddress;
     }
 
     public void run() {
         Response response = Response.status(Response.Status.OK).build();
         Jedis jedis;
         try{
-            jedis = new Jedis("localhost", port);
+            jedis = new Jedis(redisServerIPAddress, port);
             try {
                 //Get the arraylists with counters and list of shipmentIDs
-                ArrayList<ArrayList<Object>> result = (ArrayList<ArrayList<Object>>) jedis.evalsha(script, 1, "testing", min, max, commonJSON, diffJSON1, diffJSON2, diffJSON3, diffJSON4, "shipmentID");
+                ArrayList<ArrayList<Object>> result = (ArrayList<ArrayList<Object>>) jedis.evalsha(script, 1, redisListName, min, max, commonJSON, diffJSON, idToBeReturned, noOfCounters);
 
                 System.out.println(result);
 
@@ -66,8 +68,8 @@ public class CounterQueryThread extends Thread {
                     while (it.hasNext() && it2.hasNext()) {
                         ArrayList<Object> row = it.next();
                         ArrayList<Object> row2 = it2.next();
-                        //System.out.println(Long.parseLong(row.get(0).toString())+" "+Long.parseLong(row2.get(0).toString())+" "+(Long.parseLong(row.get(0).toString())+Long.parseLong(row2.get(0).toString())));
-                        row2.set(0, (Long.parseLong(row.get(0).toString())+Long.parseLong(row2.get(0).toString())));
+                        //System.out.println(Long.parseLong(row.get(counterIndex).toString())+" "+Long.parseLong(row2.get(counterIndex).toString())+" "+(Long.parseLong(row.get(counterIndex).toString())+Long.parseLong(row2.get(counterIndex).toString())));
+                        row2.set(counterIndex, (Long.parseLong(row.get(counterIndex).toString())+Long.parseLong(row2.get(counterIndex).toString())));
                         row2.addAll(row.subList(1,row.size()));
                     }
                 }

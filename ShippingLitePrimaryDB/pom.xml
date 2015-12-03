@@ -12,7 +12,7 @@
     <groupId>com.flipkart.shippinglite</groupId>
     <artifactId>ShippingLitePrimaryDB</artifactId>
     <properties>
-        <dropwizard.version>0.8.2</dropwizard.version>
+        <dropwizard.version>0.9.1</dropwizard.version>
     </properties>
     <dependencies>
         <dependency>

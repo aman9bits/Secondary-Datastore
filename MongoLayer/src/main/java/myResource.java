@@ -1,3 +1,7 @@
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -9,10 +13,10 @@ import org.bson.Document;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.json.JSONObject;
 
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,6 +24,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -27,10 +32,18 @@ import java.util.Map;
  */
 
 @Path("/")
+@Consumes(MediaType.APPLICATION_JSON)
+
 public class myResource {
     /*
         Insert shipment information in MongoDB
      */
+
+    @POST
+    @Path("/test")
+    public void test(){
+        System.out.println("called");
+    }
     @POST
     @Path("/insertMongo")
     @Produces("application/json")
@@ -148,17 +161,5 @@ public class myResource {
         ));
         mongoClient.close();
     }
-/*
-    @Path("/getSamples")
-    @Produces("application/json")
-    @POST
-    public String getSamples(String input){
-        String result;
-        MongoClient mongoClient = new MongoClient("localhost");
-        MongoDatabase database = mongoClient.getDatabase("test");
-        MongoCollection<Document> collection = database.getCollection("Date" + eventTime.dayOfYear().getAsText());
-        return result;
-    }*/
-
 }
 

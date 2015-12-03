@@ -22,12 +22,13 @@ public class ShippingLiteApp extends Application<myConfig> {
     public void run(myConfig myConfig, Environment environment) throws Exception {
         final ShipmentStatusHistoryDAO dao1 = new ShipmentStatusHistoryDAO(hibernate.getSessionFactory());
         final ShipmentsDAO dao2 = new ShipmentsDAO(hibernate.getSessionFactory());
-        final ShippingLiteShipmentsDAO dao3 = new ShippingLiteShipmentsDAO(hibernate.getSessionFactory());
-        final ShippingLiteShipmentStatusHistoryDAO dao4 = new ShippingLiteShipmentStatusHistoryDAO(hibernate.getSessionFactory());
+        final ShippingLiteShipmentsDAO liteShipmentsDAO = new ShippingLiteShipmentsDAO(hibernate.getSessionFactory());
+        final ShippingLiteShipmentStatusHistoryDAO liteShipmentStatusHistoryDAO = new ShippingLiteShipmentStatusHistoryDAO(hibernate.getSessionFactory());
 
-        environment.jersey().register(new myResource(dao1,dao2,dao3,dao4));
+        environment.jersey().register(new myResource(dao1,dao2,liteShipmentsDAO,liteShipmentStatusHistoryDAO));
+        environment.jersey().register(new ShippingLiteResource(liteShipmentsDAO,liteShipmentStatusHistoryDAO));
     }
-    private final HibernateBundle<myConfig> hibernate = new HibernateBundle<myConfig>(ShipmentStatusHistory.class, Shipments.class) {
+    private final HibernateBundle<myConfig> hibernate = new HibernateBundle<myConfig>(ShipmentStatusHistory.class, Shipments.class,ShippingLiteShipmentStatusHistory.class, ShippingLiteShipments.class) {
         @Override
         public DataSourceFactory getDataSourceFactory(myConfig configuration) {
             return configuration.getDataSourceFactory();
