@@ -17,9 +17,9 @@ import java.util.*;
  * Created by aman.gupta on 04/09/15.
  */
 @Path("/")
-public class ReconciliationModuleResource {
+public class ReconciliationResource {
 
-    public ReconciliationModuleResource() {
+    public ReconciliationResource() {
         super();
     }
 
